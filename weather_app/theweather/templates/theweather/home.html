@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends "base.html" %}
+{% block start%}
+<div class="content_wrapper" id="app">
+	<div v-if="infos.city">
+		<h1>
+			Weather
+			<div class="date"></div>
+		</h1>
+
+		<div class="weather_card">
+			<div class="weather_card_img" :style="{backgroundImage: weatherImg}">
+				<div class="weather_card_state">
+					<span class="material-icons">
+					</span>
+				</div>
+			</div>
+
+			<div class="weather_card_infos">
+				<div class="weather_card_infos_title">
+				</div>
+				<div class="weather_card_infos_temp">
+					°C / °F
+				</div>
+				<div class="bottom">
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
+
+</body>
+</html>

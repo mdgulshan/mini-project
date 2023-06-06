@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style media="screen">
+        body{
+        background-image<img src="https://www.nicepng.com/png/detail/15-155040_weather-icon-weather.png" alt="image">
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+
+</head>
+<body  style="background-color:#4272f5">
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Which city weather you want?</h1>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">{{ form.name }}</div>
+                            <div class="control"><button  class="button is-info" type="submit">Add city</button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    {% for city_theweather in theweather_data%}
+                    <div style="background:grey" align="left" class="box" >
+                        <article class="media">
+                            <div class="media-left">
+                                <figure style="background:skyblue"class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ city_theweather.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ city_theweather.city }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ city_theweather.temperature }}° F</span>
+                                        <br>  {{ city_theweather.description }}
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    </footer>
+</body>
+</html>
